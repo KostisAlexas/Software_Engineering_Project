@@ -1,1 +1,11 @@
+Το RegistrationForm είναι συνοριακό γιατί ο χρήστης αλληλεπιδρά με αυτό.
+
+Ο RegistrationController χειρίζεται όλη τη λογική, π.χ. αν υπάρχει ήδη το email.
+
+Το UserAccount είναι entity: αποθηκεύει τα δεδομένα του χρήστη.
+
+Το ConfirmationEmailScreen είναι boundary (email επιβεβαίωσης).
+
+Ο EmailConfirmationController χειρίζεται την επιβεβαίωση.
+
 
