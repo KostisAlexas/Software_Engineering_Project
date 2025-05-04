@@ -1,32 +1,21 @@
 package com.example.fitguide.UI
 
 import android.os.Bundle
-import android.content.Intent
-import android.util.Log
-import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.fitguide.R
 
-class MainActivity : AppCompatActivity() {
+class CreateWorkoutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_create_workout)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        Log.d("MainActivity", "onCreate")
-
-        val goToHellButton = findViewById<Button>(R.id.goToHellButton)
-        goToHellButton.setOnClickListener {
-            val intent = Intent(this, CreateWorkoutActivity::class.java)
-            startActivity(intent)
-        }
-
     }
 }
