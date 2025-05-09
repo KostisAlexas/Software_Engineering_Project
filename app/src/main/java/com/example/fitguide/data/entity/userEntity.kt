@@ -19,5 +19,8 @@ data class UserEntity(
     @PrimaryKey(autoGenerate = true) val userId: Long = 0,
     val username: String,
     val passwordHash: String,    // hashed password for local auth
+    val email: String,
+    val firstName: String,
+    val lastName: String,
     val coachId: Long? = null   // if not null, this user has a coach
 )

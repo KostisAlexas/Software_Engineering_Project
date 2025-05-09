@@ -4,8 +4,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import java.time.Instant
-
+import java.util.Date
 
 
 /**
@@ -33,5 +32,5 @@ data class ScheduledWorkoutEntity(
     @PrimaryKey(autoGenerate = true) val scheduledWorkoutId: Long = 0,
     val workoutId: Long,
     val userId: Long,           // user who scheduled this workout
-    val scheduledAt: Instant    // when the workout is planned
+    val dateTime: Long         // when the workout is planned
 )

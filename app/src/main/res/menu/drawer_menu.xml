@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item
+            android:id="@+id/nav_view_workouts"
+            android:title="My Routines" />
+        <item
+            android:id="@+id/nav_view_exercises"
+            android:title="My Exercises" />
+        <item
+            android:id="@+id/nav_statistics"
+            android:title="Progress Statistics" />
+        <item
+            android:id="@+id/nav_profile"
+            android:title="Profile" />
+        <item
+            android:id="@+id/nav_create_exercise"
+            android:title="Create Exercise" />
+        <item
+            android:id="@+id/nav_settings"
+            android:title="Settings" />
+
+
+    </group>
+</menu>
