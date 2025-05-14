@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     id("com.google.dagger.hilt.android")
     id("kotlin-kapt")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -54,4 +55,7 @@ dependencies {
     kapt("androidx.room:room-compiler:$room_version")
     implementation("com.google.dagger:hilt-android:2.56.2")
     kapt("com.google.dagger:hilt-compiler:2.56.2")
+    implementation("com.google.code.gson:gson:2.10.1")
+
+
 }

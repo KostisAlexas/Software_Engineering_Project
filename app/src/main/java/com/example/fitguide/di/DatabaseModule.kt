@@ -10,18 +10,24 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.SupervisorJob
 
 @Module
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
     @Provides
     @Singleton
-    fun provideDatabase(@ApplicationContext appContext: Context): AppDatabase {
-        return Room.databaseBuilder(
-            appContext,
-            AppDatabase::class.java,
-            "app_database" // You can change the database name here if you want
-        ).build()
+    fun provideApplicationScope() : CoroutineScope = CoroutineScope(SupervisorJob())
+
+    @Provides
+    @Singleton
+    fun provideDatabase(
+        @ApplicationContext appContext: Context,
+        applicationScope: CoroutineScope
+    ): AppDatabase {
+        // Use AppDatabase.getDatabase() so that the callback is properly set
+        return AppDatabase.getDatabase(appContext, applicationScope)
     }
 
     @Provides

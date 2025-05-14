@@ -14,7 +14,7 @@ interface ExerciseDao {
     suspend fun deleteExercise(exercise: ExerciseEntity)
 
 
-    @Query("SELECT * FROM exercises WHERE ownerId = :ownerId AND ownerId IS NULL")
+    @Query("SELECT * FROM exercises WHERE ownerId = :ownerId OR ownerId IS NULL")
     fun getCustomExercisesForUser(ownerId: Long): Flow<List<ExerciseEntity>>
 
     @Query("SELECT * FROM exercises WHERE ownerId IS NULL")

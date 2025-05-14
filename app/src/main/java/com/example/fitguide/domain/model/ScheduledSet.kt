@@ -1,9 +1,14 @@
 package com.example.fitguide.domain.model
 
+
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 sealed class ScheduledSet(
     open val id: Long? = null,
     open val exerciseType: ExerciseType
-) {
+) : Parcelable {
     data class WeightedSet(
         override val id: Long? = null,
         override val exerciseType: ExerciseType = ExerciseType.WEIGHTED,

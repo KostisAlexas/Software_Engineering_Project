@@ -41,6 +41,8 @@ fun ExerciseEntity.toDomain() : Exercise {
         name = name,
         description = description,
         type = type,
+        primaryMuscleGroups = primaryMuscleGroups,
+        secondaryMuscleGroups = secondaryMuscleGroups ?: emptyList(),
         ownerId = ownerId
     )
 }
@@ -51,6 +53,8 @@ fun Exercise.toEntity() : ExerciseEntity {
         name = name,
         description = description,
         type = type,
+        primaryMuscleGroups = primaryMuscleGroups,
+        secondaryMuscleGroups = secondaryMuscleGroups,
         ownerId = ownerId
     )
 }

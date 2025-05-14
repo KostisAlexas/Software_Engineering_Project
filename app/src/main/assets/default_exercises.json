@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Squat",
+    "description": "A lower body exercise that targets the quadriceps, hamstrings, and glutes.",
+    "type": "WEIGHTED",
+    "primaryMuscleGroups": ["QUADS", "GLUTES", "HAMSTRINGS"],
+    "secondaryMuscleGroups": ["LOWER_BACK"]
+  },
+    {
+        "name": "Bench Press",
+        "description": "An upper body exercise that primarily targets the chest, shoulders, and triceps.",
+        "type": "WEIGHTED",
+        "primaryMuscleGroups": ["UPPER_CHEST", "LOWER_CHEST", "FRONT_DELTOIDS", "TRICEPS"],
+        "secondaryMuscleGroups": []
+    },
+    {
+        "name": "Deadlift",
+        "description": "A compound exercise that works multiple muscle groups, primarily the back, glutes, and hamstrings.",
+        "type": "WEIGHTED",
+        "primaryMuscleGroups": ["LOWER_BACK", "GLUTES", "HAMSTRINGS", "SPINAL_ERECTORS", "TRAPS"],
+        "secondaryMuscleGroups": ["LATS", "FOREARMS"]
+    }
+]
