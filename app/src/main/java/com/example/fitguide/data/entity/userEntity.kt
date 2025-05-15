@@ -22,5 +22,9 @@ data class UserEntity(
     val email: String,
     val firstName: String,
     val lastName: String,
+    val gender : String? = null,
+    val dateOfBirth: Long? = null, // date of birth in milliseconds since epoch
+    val height: Float? = null,   // height in cm
+    val weight: Float? = null,   // weight in kg
     val coachId: Long? = null   // if not null, this user has a coach
 )

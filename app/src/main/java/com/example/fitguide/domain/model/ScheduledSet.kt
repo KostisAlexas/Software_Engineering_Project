@@ -7,7 +7,8 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 sealed class ScheduledSet(
     open val id: Long? = null,
-    open val exerciseType: ExerciseType
+    open val exerciseType: ExerciseType,
+    val RPE: Int? = null,
 ) : Parcelable {
     data class WeightedSet(
         override val id: Long? = null,
