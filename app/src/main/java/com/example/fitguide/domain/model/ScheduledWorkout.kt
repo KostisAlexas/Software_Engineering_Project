@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class ScheduledWorkout(
-    val athlete: User,
+    val userId: Long, // The user for whom this workout is scheduled.
     val dateTime: Date,
     val workout: Workout,
     val exercises: List<ScheduledExercise>

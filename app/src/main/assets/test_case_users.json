@@ -1,0 +1,42 @@
+[
+  {
+    "username": "johndoe",
+    "password": "password123",
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "",
+    "gender": "male",
+    "age": "30",
+    "height": "180",
+    "weight": "75",
+    "coachId": "",
+    "isCoach": false
+  },
+  {
+    "username": "janedoe",
+    "password": "password456",
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "email": "",
+    "gender": "female",
+    "age": "28",
+    "height": "165",
+    "weight": "60",
+    "coachId": "",
+    "isCoach": false
+  },
+
+  {
+    "username": "coach1",
+    "password": "coachpass",
+    "firstName": "Coach",
+    "lastName": "Smith",
+    "email": "",
+    "gender":"",
+    "age": "",
+    "height": "",
+    "weight": "",
+    "coachId": "",
+    "isCoach": true
+  }
+]

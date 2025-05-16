@@ -31,6 +31,6 @@ import java.util.Date
 data class ScheduledWorkoutEntity(
     @PrimaryKey(autoGenerate = true) val scheduledWorkoutId: Long = 0,
     val workoutId: Long,
-    val userId: Long,           // user who scheduled this workout
+    val userId: Long,           // user for whom the workout is scheduled
     val dateTime: Long         // when the workout is planned
 )

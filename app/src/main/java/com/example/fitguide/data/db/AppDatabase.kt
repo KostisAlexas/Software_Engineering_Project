@@ -9,7 +9,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.fitguide.data.TypeConverters.*
 import com.example.fitguide.data.dao.*
 import com.example.fitguide.data.entity.*
-import com.example.fitguide.data.util.parseDefaultExercises
+import com.example.fitguide.data.util.*
 import com.example.fitguide.domain.model.ExerciseType
 import com.example.fitguide.domain.model.MuscleGroup
 import kotlinx.coroutines.CoroutineScope
@@ -63,14 +63,15 @@ abstract class AppDatabase : RoomDatabase() {
             super.onCreate(db)
             INSTANCE?.let { database ->
                 scope.launch {
-                    populateDatabase(database.exerciseDao(), context)
+                    populateExercises(database.exerciseDao(), context)
+                    populateUsers(database.userDao(), context)
                 }
             }
         }
     }
 }
 
-suspend fun populateDatabase(exerciseDao: ExerciseDao, context: Context) {
+suspend fun populateExercises(exerciseDao: ExerciseDao, context: Context) {
     val defaultExercises = parseDefaultExercises(context)
     val exerciseEntities = defaultExercises.map { exerciseJson ->
         ExerciseEntity(
@@ -84,5 +85,28 @@ suspend fun populateDatabase(exerciseDao: ExerciseDao, context: Context) {
     }
     exerciseEntities.forEach { exerciseEntity ->
         exerciseDao.insertExercise(exerciseEntity)
+    }
+}
+
+suspend fun populateUsers(userDao: UserDao, context: Context) {
+    val testUsers = parseUsers(context)
+    val userEntities = testUsers.map { userJson ->
+        UserEntity(
+            userId = userJson.id,
+            username = userJson.username,
+            passwordHash = userJson.password,
+            firstName = userJson.firstName,
+            lastName = userJson.lastName,
+            email = userJson.email,
+            gender = userJson.gender,
+            dateOfBirth = userJson.age,
+            height = userJson.height,
+            weight = userJson.weight,
+            coachId = userJson.coachId,
+            isCoach = userJson.isCoach
+        )
+    }
+    userEntities.forEach { userEntity ->
+        userDao.insertUser(userEntity)
     }
 }
