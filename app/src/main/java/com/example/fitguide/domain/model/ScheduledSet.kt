@@ -32,7 +32,8 @@ sealed class ScheduledSet(
     data class DistanceSet(
         override val id: Long? = null,
         override val exerciseType: ExerciseType = ExerciseType.DISTANCE,
-        val distanceMeters: Int
+        val distanceMeters: Int,
+        val durationSeconds: Int
     ) : ScheduledSet(id, exerciseType)
 
 }
