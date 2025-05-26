@@ -30,9 +30,7 @@ class ExerciseRepositoryImpl @Inject constructor(
 
     override suspend fun getExerciseById(id: Long): Exercise? {
         return exerciseDao.getExerciseById(id)?.toDomain()
-
     }
-
 }
 
 fun ExerciseEntity.toDomain() : Exercise {
