@@ -37,8 +37,11 @@ android {
         jvmTarget = "11"
     }
 }
-
+val room_version = "2.7.1"
 dependencies {
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -48,7 +51,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    val room_version = "2.7.1"
 
     implementation("androidx.room:room-runtime:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
