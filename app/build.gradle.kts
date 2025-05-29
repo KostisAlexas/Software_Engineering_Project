@@ -56,6 +56,5 @@ dependencies {
     implementation("com.google.dagger:hilt-android:2.56.2")
     kapt("com.google.dagger:hilt-compiler:2.56.2")
     implementation("com.google.code.gson:gson:2.10.1")
-
-
+    implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
 }
