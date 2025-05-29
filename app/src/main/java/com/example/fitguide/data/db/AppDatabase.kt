@@ -92,7 +92,6 @@ suspend fun populateUsers(userDao: UserDao, context: Context) {
     val testUsers = parseUsers(context)
     val userEntities = testUsers.map { userJson ->
         UserEntity(
-            userId = userJson.id,
             username = userJson.username,
             passwordHash = userJson.password,
             firstName = userJson.firstName,
@@ -102,7 +101,7 @@ suspend fun populateUsers(userDao: UserDao, context: Context) {
             dateOfBirth = userJson.age,
             height = userJson.height,
             weight = userJson.weight,
-            coachId = userJson.coachId,
+            coachId = null,
             isCoach = userJson.isCoach
         )
     }

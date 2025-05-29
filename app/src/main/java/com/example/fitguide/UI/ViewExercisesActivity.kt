@@ -3,6 +3,7 @@ package com.example.fitguide.UI
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -21,24 +22,41 @@ import javax.inject.Inject
 class ViewExercisesActivity : AppCompatActivity() {
 
     companion object {
-        private const val CREATE_EXERCISE_REQUEST = 100
+        const val MODE_VIEW = "mode_view"
+        const val MODE_PICK = "mode_pick"
+
+        const val CREATE_EXERCISE_REQUEST = 100
+        const val EXTRA_SELECTED_EXERCISE = "selected_exercise"
+        const val EXTRA_MODE = "mode"
     }
+
 
     @Inject lateinit var exerciseRepository: ExerciseRepository
     private lateinit var adapter: ViewExercisesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_view_exercises)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
+        val mode = intent.getStringExtra(EXTRA_MODE) ?: MODE_VIEW
+
         // Setup RecyclerView
         val recyclerView = findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.exercises_recycler_view)
-        adapter = ViewExercisesAdapter(emptyList())
+
+        // Setup adapter
+        adapter = ViewExercisesAdapter(emptyList()) { exercise ->
+            if (mode == MODE_PICK) {
+                val resultIntent = Intent().apply {
+                    putExtra(EXTRA_SELECTED_EXERCISE, exercise)
+                }
+                setResult(RESULT_OK, resultIntent)
+                finish()
+            } else {
+                // Default view mode behavior, e.g., show details
+                Toast.makeText(this, "Exercise: ${exercise.name}", Toast.LENGTH_SHORT).show()
+            }
+        }
+
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
@@ -65,5 +83,6 @@ class ViewExercisesActivity : AppCompatActivity() {
                 adapter.addExercise(it)
             }
         }
+
     }
 }

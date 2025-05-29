@@ -59,14 +59,14 @@ class ProfileActivity : BaseActivity() {
             lastName = "Doe",
             email = "john.doe@example.com",
             gender = "male",
-            age = 30,
+            dateOfBirth = 30,
             height = 180F,
             weight = 75.0F
         )
         firstNameValue.text = user.firstName
         lastNameValue.text = user.lastName
         genderValue.text = user.gender
-        ageValue.text = user.age.toString()
+        ageValue.text = user.dateOfBirth.toString()
         heightValue.text = user.height.toString()
         weightValue.text = user.weight.toString()
     }

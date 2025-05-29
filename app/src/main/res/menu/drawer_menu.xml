@@ -17,6 +17,9 @@
             android:id="@+id/nav_create_exercise"
             android:title="Create Exercise" />
         <item
+            android:id="@+id/nav_create_workout"
+            android:title="Create Workout" />
+        <item
             android:id="@+id/nav_settings"
             android:title="Settings" />
 

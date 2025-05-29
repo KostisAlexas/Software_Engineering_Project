@@ -12,9 +12,9 @@ import androidx.room.PrimaryKey
     tableName = "scheduled_exercises",
     foreignKeys = [
         ForeignKey(
-            entity = ScheduledWorkoutEntity::class,
-            parentColumns = ["scheduledWorkoutId"],
-            childColumns = ["scheduledWorkoutId"],
+            entity = WorkoutEntity::class,
+            parentColumns = ["workoutId"],
+            childColumns = ["workoutId"],
             onDelete = ForeignKey.CASCADE
         ),
         ForeignKey(
@@ -24,11 +24,11 @@ import androidx.room.PrimaryKey
             onDelete = ForeignKey.RESTRICT
         )
     ],
-    indices = [Index("scheduledWorkoutId"), Index("exerciseId")]
+    indices = [Index("workoutId"), Index("exerciseId")]
 )
 data class ScheduledExerciseEntity(
     @PrimaryKey(autoGenerate = true) val scheduledExerciseId: Long = 0,
-    val scheduledWorkoutId: Long,
+    val workoutId: Long,
     val exerciseId: Long,
     val restTimeSeconds: Int,
     val notes: String?

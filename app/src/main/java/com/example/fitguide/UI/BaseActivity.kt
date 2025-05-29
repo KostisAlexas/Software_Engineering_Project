@@ -55,6 +55,7 @@ abstract class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationIt
             R.id.nav_create_exercise -> startActivity(Intent(this, CreateExerciseActivity::class.java))
             R.id.nav_view_exercises -> startActivity(Intent(this, ViewExercisesActivity::class.java))
             R.id.nav_profile -> startActivity(Intent(this, ProfileActivity::class.java))
+            R.id.nav_create_workout -> startActivity(Intent(this, CreateWorkoutActivity::class.java))
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true

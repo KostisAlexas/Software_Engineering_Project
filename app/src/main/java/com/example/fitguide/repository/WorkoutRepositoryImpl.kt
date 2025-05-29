@@ -17,7 +17,8 @@ class WorkoutRepositoryImpl @Inject constructor(
                     id = entity.workoutId,
                     name = entity.name,
                     description = entity.description,
-                    ownerId = entity.ownerId
+                    ownerId = entity.ownerId,
+                    exercises = emptyList() // Assuming exercises are handled separately
                 )
             }
         }
@@ -29,7 +30,8 @@ class WorkoutRepositoryImpl @Inject constructor(
                 id = entity.workoutId,
                 name = entity.name,
                 description = entity.description,
-                ownerId = entity.ownerId
+                ownerId = entity.ownerId,
+                exercises = emptyList() // Assuming exercises are handled separately
             )
         }
     }

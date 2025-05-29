@@ -9,11 +9,11 @@ data class `User`(
     val id: Long? = null,
     val username: String,
     val password: String,
-    val firstName: String? = null,
-    val lastName: String? = null,
-    val email: String? = null,
+    val firstName: String,
+    val lastName: String,
+    val email: String,
     val gender : String? = null,
-    val age: Long? = null, // date of birth in milliseconds since epoch
+    val dateOfBirth: Long? = null, // date of birth in milliseconds since epoch
     val height: Float? = null,   // height in cm
     val weight: Float? = null,   // weight in kg
     val coachId: Long? = null, // If the user has a coach.

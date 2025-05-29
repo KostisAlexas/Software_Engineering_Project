@@ -8,11 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fitguide.R
 import com.example.fitguide.domain.model.Exercise
 
-class ViewExercisesAdapter(private var exercises: List<Exercise>) : RecyclerView.Adapter<ViewExercisesAdapter.ExerciseViewHolder>() {
+class ViewExercisesAdapter(private var exercises: List<Exercise>, private val onExerciseClick: ((Exercise) -> Unit)? = null
+    ) : RecyclerView.Adapter<ViewExercisesAdapter.ExerciseViewHolder>() {
 
     inner class ExerciseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val exerciseName: TextView = itemView.findViewById(R.id.exercise_name)
         val exerciseType: TextView = itemView.findViewById(R.id.exercise_type)
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExerciseViewHolder {
@@ -23,6 +25,9 @@ class ViewExercisesAdapter(private var exercises: List<Exercise>) : RecyclerView
     override fun onBindViewHolder(holder: ExerciseViewHolder, position: Int) {
         holder.exerciseName.text = exercises[position].name
         holder.exerciseType.text = exercises[position].type.name
+        holder.itemView.setOnClickListener {
+            onExerciseClick?.invoke(exercises[position])
+        }
     }
 
     override fun getItemCount(): Int = exercises.size

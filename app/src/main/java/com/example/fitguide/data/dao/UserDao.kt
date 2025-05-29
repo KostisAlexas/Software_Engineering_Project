@@ -2,6 +2,7 @@ package com.example.fitguide.data.dao
 
 import androidx.room.*
 import com.example.fitguide.data.entity.UserEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface UserDao {
@@ -14,4 +15,9 @@ interface UserDao {
     @Query("SELECT * FROM users WHERE userId = :id")
     suspend fun getUserById(id: Long): UserEntity?
 
+    @Query("SELECT * FROM users WHERE coachId = :id")
+    fun getUserAthletes(id: Long): Flow<List<UserEntity>>
+
+    @Delete
+    suspend fun deleteUser(user: UserEntity)
 }

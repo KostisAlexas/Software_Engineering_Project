@@ -14,7 +14,6 @@ data class ExerciseJson(
 )
 
 data class UserJson(
-    val id: Long,
     val username: String,
     val password: String,
     val firstName: String,
@@ -36,7 +35,7 @@ fun parseDefaultExercises(context: Context): List<ExerciseJson> {
 }
 
 fun parseUsers(context: Context): List<UserJson> {
-    val inputStream = context.assets.open("users.json")
+    val inputStream = context.assets.open("test_case_users.json")
     val reader = InputStreamReader(inputStream)
     val type = object : TypeToken<List<UserJson>>() {}.type
     return Gson().fromJson(reader, type)

@@ -4,12 +4,12 @@
     "password": "password123",
     "firstName": "John",
     "lastName": "Doe",
-    "email": "",
+    "email": "johndoe@example.com",
     "gender": "male",
     "age": "30",
     "height": "180",
     "weight": "75",
-    "coachId": "",
+    "coachId": "3",
     "isCoach": false
   },
   {
@@ -17,12 +17,12 @@
     "password": "password456",
     "firstName": "Jane",
     "lastName": "Doe",
-    "email": "",
+    "email": "janedoe@example.com",
     "gender": "female",
     "age": "28",
     "height": "165",
     "weight": "60",
-    "coachId": "",
+    "coachId": "3",
     "isCoach": false
   },
 
@@ -31,12 +31,49 @@
     "password": "coachpass",
     "firstName": "Coach",
     "lastName": "Smith",
-    "email": "",
+    "email": "coach1@example.com",
     "gender":"",
-    "age": "",
-    "height": "",
-    "weight": "",
-    "coachId": "",
+    "age": "30",
+    "height": "175",
+    "weight": "80",
+    "coachId": "0",
     "isCoach": true
-  }
+  },
+
+    {
+        "username": "athlete1",
+        "password": "athletepass1",
+        "firstName": "Alice",
+        "lastName": "Johnson",
+        "email": "alice.johnson@example.com",
+        "age": "25",
+        "height": "170",
+        "weight":  "65",
+        "coachId": "3",
+        "isCoach": false
+    },
+    {
+        "username": "athlete2",
+        "password": "athletepass2",
+        "firstName": "Bob",
+        "lastName": "Williams",
+        "email": "bob.williams@example.com",
+        "age": "27",
+        "height": "175",
+        "weight":  "70",
+        "coachId": "3",
+        "isCoach": false
+    },
+    {
+        "username": "athlete3",
+        "password": "athletepass3",
+        "firstName": "Charlie",
+        "lastName": "Brown",
+        "email": "charlie.brown@example.com",
+        "age": "22",
+        "height": "180",
+        "weight":  "80",
+        "coachId": "3",
+        "isCoach": false
+    }
 ]
