@@ -33,16 +33,6 @@
         android:layout_height="wrap_content"
         android:text="Add Set" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="RPE (1-10)"
-        android:layout_marginTop="8dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_rpe"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal" />
-    </com.google.android.material.textfield.TextInputLayout>
+    <!-- Removed RPE field from exercise form -->
 
 </LinearLayout>

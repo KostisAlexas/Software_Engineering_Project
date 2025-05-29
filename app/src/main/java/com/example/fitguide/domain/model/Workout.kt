@@ -12,4 +12,9 @@ data class Workout(
     val exercises: List<ScheduledExercise>
 ) : Parcelable {
     // Methods for workout-related actions.
+
+    // Calculates total workout volume in tonnage (kg * reps)
+    fun calculateTotalVolume(): Int {
+        return exercises.sumOf { it.calculateVolume() }
+    }
 }

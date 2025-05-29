@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -14,74 +15,85 @@ import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.lifecycleScope
 import com.example.fitguide.R
 import com.google.android.material.navigation.NavigationView
-import com.github.mikephil.charting.charts.LineChart
-import com.github.mikephil.charting.components.XAxis
-import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.data.LineData
-import com.github.mikephil.charting.data.LineDataSet
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.example.fitguide.domain.model.User
+import com.example.fitguide.repository.UserRepository
+import com.example.fitguide.utils.UserSession
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import javax.inject.Inject
+//import com.github.mikephil.charting.charts.LineChart
+//import com.github.mikephil.charting.components.XAxis
+//import com.github.mikephil.charting.data.Entry
+//import com.github.mikephil.charting.data.LineData
+//import com.github.mikephil.charting.data.LineDataSet
+//import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import android.graphics.Color
 import java.text.SimpleDateFormat
 import java.util.*
 import android.view.LayoutInflater
 import android.widget.LinearLayout
-import android.widget.TextView
 
+
+@AndroidEntryPoint
 class MainActivity : BaseActivity() {
+
+    @Inject
+    lateinit var userRepository: UserRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         // --- Add chart logic below ---
-        val chart = findViewById<LineChart?>(R.id.lineChart)
-        if (chart != null) {
-            val days = 15
-            val dateFormat = SimpleDateFormat("dd/MM", Locale.getDefault())
-            val calendar = Calendar.getInstance()
-            val labels = mutableListOf<String>()
-            val volumeEntries = mutableListOf<Entry>()
-            val intensityEntries = mutableListOf<Entry>()
-
-            for (i in (days - 1) downTo 0) {
-                calendar.time = Date()
-                calendar.add(Calendar.DAY_OF_YEAR, -i)
-                val label = dateFormat.format(calendar.time)
-                labels.add(label)
-                // Dummy data
-                val volume = (100..300).random().toFloat()
-                val intensity = (50..150).random().toFloat()
-                volumeEntries.add(Entry((days - i - 1).toFloat(), volume))
-                intensityEntries.add(Entry((days - i - 1).toFloat(), intensity))
-            }
-
-            val volumeDataSet = LineDataSet(volumeEntries, "Workout Volume").apply {
-                color = Color.BLUE
-                setCircleColor(Color.BLUE)
-                lineWidth = 2f
-                valueTextColor = Color.BLUE
-            }
-            val intensityDataSet = LineDataSet(intensityEntries, "Workout Intensity").apply {
-                color = Color.RED
-                setCircleColor(Color.RED)
-                lineWidth = 2f
-                valueTextColor = Color.RED
-            }
-
-            val lineData = LineData(volumeDataSet, intensityDataSet)
-            chart.data = lineData
-
-            chart.xAxis.valueFormatter = IndexAxisValueFormatter(labels)
-            chart.xAxis.position = XAxis.XAxisPosition.BOTTOM
-            chart.xAxis.granularity = 1f
-            chart.xAxis.labelRotationAngle = -45f
-            chart.axisRight.isEnabled = false
-            chart.description.isEnabled = false
-            chart.legend.isEnabled = true
-            chart.invalidate()
-        }
+//        val chart = findViewById<LineChart?>(R.id.lineChart)
+//        if (chart != null) {
+//            val days = 15
+//            val dateFormat = SimpleDateFormat("dd/MM", Locale.getDefault())
+//            val calendar = Calendar.getInstance()
+//            val labels = mutableListOf<String>()
+//            val volumeEntries = mutableListOf<Entry>()
+//            val intensityEntries = mutableListOf<Entry>()
+//
+//            for (i in (days - 1) downTo 0) {
+//                calendar.time = Date()
+//                calendar.add(Calendar.DAY_OF_YEAR, -i)
+//                val label = dateFormat.format(calendar.time)
+//                labels.add(label)
+//                // Dummy data
+//                val volume = (100..300).random().toFloat()
+//                val intensity = (50..150).random().toFloat()
+//                volumeEntries.add(Entry((days - i - 1).toFloat(), volume))
+//                intensityEntries.add(Entry((days - i - 1).toFloat(), intensity))
+//            }
+//
+//            val volumeDataSet = LineDataSet(volumeEntries, "Workout Volume").apply {
+//                color = Color.BLUE
+//                setCircleColor(Color.BLUE)
+//                lineWidth = 2f
+//                valueTextColor = Color.BLUE
+//            }
+//            val intensityDataSet = LineDataSet(intensityEntries, "Workout Intensity").apply {
+//                color = Color.RED
+//                setCircleColor(Color.RED)
+//                lineWidth = 2f
+//                valueTextColor = Color.RED
+//            }
+//
+//            val lineData = LineData(volumeDataSet, intensityDataSet)
+//            chart.data = lineData
+//
+//            chart.xAxis.valueFormatter = IndexAxisValueFormatter(labels)
+//            chart.xAxis.position = XAxis.XAxisPosition.BOTTOM
+//            chart.xAxis.granularity = 1f
+//            chart.xAxis.labelRotationAngle = -45f
+//            chart.axisRight.isEnabled = false
+//            chart.description.isEnabled = false
+//            chart.legend.isEnabled = true
+//            chart.invalidate()
+//        }
 
         // --- Scheduled Workouts Section ---
         val scheduledWorkoutsSection = findViewById<LinearLayout>(R.id.scheduledWorkoutsSection)
@@ -103,14 +115,18 @@ class MainActivity : BaseActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_activity_menu, menu)
+        // Only inflate the logout menu, remove the add button menu
+        menuInflater.inflate(R.menu.menu_logout, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_add -> {
-                // Handle your button click here
+            R.id.action_logout -> {
+                // Handle logout
+                UserSession.logout(this)
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
                 return true
             }
         }

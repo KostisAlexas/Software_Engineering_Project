@@ -20,10 +20,10 @@ abstract class RepositoryModule {
         exerciseRepositoryImpl: ExerciseRepositoryImpl
     ): ExerciseRepository
 
-//    @Binds
-//    abstract fun bindUserRepository(
-//        userRepositoryImpl: UserRepositoryImpl
-//    ): UserRepository
+    @Binds
+    abstract fun bindUserRepository(
+        userRepositoryImpl: UserRepositoryImpl
+    ): UserRepository
 //
 //    @Binds
 //    abstract fun bindScheduledWorkoutRepository(

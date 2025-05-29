@@ -13,3 +13,4 @@ data class Exercise(
     val secondaryMuscleGroups: List<MuscleGroup>,
     val ownerId: Long? = null
 ) : Parcelable
+

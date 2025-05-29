@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class `User`(
-    val id: Long? = null,
+    val id: Long? = null, // User ID, null if not yet saved in the database
     val username: String,
     val password: String,
     val firstName: String,
