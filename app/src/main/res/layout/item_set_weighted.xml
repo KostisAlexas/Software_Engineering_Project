@@ -20,4 +20,12 @@
         android:layout_height="wrap_content"
         android:hint="Weight (kg)"
         android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/rpeEditText"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:hint="RPE"
+        android:inputType="number" />
 </LinearLayout>

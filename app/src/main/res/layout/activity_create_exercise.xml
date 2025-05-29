@@ -1,100 +1,110 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:orientation="vertical">
 
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:title="Δημιουργία Άσκησης"
+        app:titleTextColor="@android:color/white" />
 
-        <!-- Exercise Name -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Exercise Name"
-            android:textSize="16sp"
-            android:layout_marginBottom="8dp" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-        <EditText
-            android:id="@+id/exercise_name"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter exercise name"
-            android:inputType="text" />
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <!-- Exercise Description -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Description (Optional)"
-            android:textSize="16sp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Όνομα Άσκησης">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/exercise_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/exercise_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter description"
-            android:inputType="textMultiLine" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Περιγραφή (προαιρετικό)">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/exercise_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Primary Muscle Groups -->
-        <TextView
-            android:id="@+id/primary_muscle_groups_selected"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Primary Muscle Groups"
-            android:textSize="16sp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp" />
+            <Button
+                android:id="@+id/exercise_types"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Τύπος Άσκησης" />
 
-        <Button
-            android:id="@+id/primary_muscle_groups"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Select Primary Muscle Groups" />
+            <TextView
+                android:id="@+id/exercise_types_selected"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Δεν έχει επιλεγεί"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:paddingBottom="8dp"/>
 
-        <!-- Secondary Muscle Groups -->
-        <TextView
-            android:id="@+id/secondary_muscle_groups_selected"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Secondary Muscle Groups"
-            android:textSize="16sp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp" />
+            <Button
+                android:id="@+id/primary_muscle_groups"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Κύριες Μυϊκές Ομάδες" />
 
-        <Button
-            android:id="@+id/secondary_muscle_groups"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Select Secondary Muscle Groups" />
+            <TextView
+                android:id="@+id/primary_muscle_groups_selected"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Δεν έχει επιλεγεί"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:paddingBottom="8dp"/>
 
-        <!-- Exercise Types -->
-        <TextView
-            android:id="@+id/exercise_types_selected"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Exercise Type"
-            android:textSize="16sp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp" />
+            <Button
+                android:id="@+id/secondary_muscle_groups"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Δευτερεύουσες Μυϊκές Ομάδες" />
 
-        <Button
-            android:id="@+id/exercise_types"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Select Exercise Type" />
-        
-        <!-- Save Button -->
-        <Button
-            android:id="@+id/save_exercise_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Save Exercise"
-            android:layout_marginTop="24dp" />
-    </LinearLayout>
-</ScrollView>
+            <TextView
+                android:id="@+id/secondary_muscle_groups_selected"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Δεν έχει επιλεγεί"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:paddingBottom="16dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="end">
+
+                <Button
+                    android:id="@+id/save_exercise_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Αποθήκευση"
+                    android:layout_marginEnd="8dp"/>
+
+                <Button
+                    android:id="@+id/cancel_exercise_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ακύρωση"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
